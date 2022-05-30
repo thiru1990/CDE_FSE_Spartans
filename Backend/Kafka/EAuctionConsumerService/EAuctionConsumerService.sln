@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAuctionConsumerService", "EAuctionConsumerService\EAuctionConsumerService.csproj", "{E3C45678-A61D-4CAE-9594-332D5B694977}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3C45678-A61D-4CAE-9594-332D5B694977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3C45678-A61D-4CAE-9594-332D5B694977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3C45678-A61D-4CAE-9594-332D5B694977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3C45678-A61D-4CAE-9594-332D5B694977}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE1FA3D3-7290-4103-A737-8F1259B43447}
+	EndGlobalSection
+EndGlobal
