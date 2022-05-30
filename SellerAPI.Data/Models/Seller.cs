@@ -1,11 +1,20 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SellerAPI.Model
+namespace SellerAPI.Data.Models
 {
-    public class ProductRequest
+   public class Seller
     {
-        public int ProductId { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         public string ProductName { get; set; }
+        public int ProductId { get; set; }
         public string ShortDescription { get; set; }
         public string DetailedDescription { get; set; }
         public string Category { get; set; }//should be enum

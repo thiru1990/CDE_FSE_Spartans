@@ -8,8 +8,8 @@ namespace SellerAPI.Service.Model
 {
   public class ProductDetails
     {
-
-            public string ProductName { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
             public string ShortDescription { get; set; }
             public string DetailedDescription { get; set; }
             public string Category { get; set; }//should be enum

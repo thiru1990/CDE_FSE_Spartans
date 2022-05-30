@@ -10,7 +10,8 @@ namespace SellerAPI.Service.Contract
    public interface ISellerService
     {
         Task<bool> AddProduct(ProductDetails request);
-        Task<List<BidDetails>> GetBidDetails(int productId);
-        Task<bool> DeleteProduct(int productId);
+        Task<bool> AddProducts(ProductDetails request);
+        Task<Data.Models.Response.BidDetailsResponse> GetBidDetails(int productId);
+        Task<bool> DeleteProduct(string productId);
     }
 }

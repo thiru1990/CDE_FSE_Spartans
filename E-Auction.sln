@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SellerAPI.Service", "Seller
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SellerAPI.Data", "SellerAPI.Data\SellerAPI.Data.csproj", "{3D999D82-8995-4890-B1C1-222438C1086A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellerAPI.Tests", "SellerAPI.Tests\SellerAPI.Tests.csproj", "{F1150640-A3A0-4DD1-B921-76851399AA16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SellerAPI.Tests", "SellerAPI.Tests\SellerAPI.Tests.csproj", "{F1150640-A3A0-4DD1-B921-76851399AA16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyerAPI.Tests", "BuyerAPI.Tests\BuyerAPI.Tests.csproj", "{9353D02C-FBDA-4226-9892-EDEFC04A4CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuyerAPI.Tests", "BuyerAPI.Tests\BuyerAPI.Tests.csproj", "{9353D02C-FBDA-4226-9892-EDEFC04A4CB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

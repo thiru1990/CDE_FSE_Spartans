@@ -6,9 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NLog.Web;
 
-namespace SellerAPI
+namespace BuyerAPI
 {
     public class Program
     {
@@ -21,14 +20,7 @@ namespace SellerAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                     .ConfigureLogging(logging =>
-                      {
-                          logging.ClearProviders();
-                          logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                      }).UseNLog();
-                    // NLog: Setup NLog for Dependency injection             
-                }                
-                ); 
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

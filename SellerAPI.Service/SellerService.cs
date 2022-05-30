@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Confluent.Kafka;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using SellerAPI.Data.Contract;
+using SellerAPI.Data.Models;
+using SellerAPI.Data.Models.Response;
 using SellerAPI.Service.Contract;
 using SellerAPI.Service.Model;
 using System;
@@ -11,12 +17,19 @@ namespace SellerAPI.Service
     {
         #region Declarations
         private readonly ILogger<SellerService> _logger;
+        private ProducerConfig _producerconfig;
+        private readonly IMapper _mapper;
+        private readonly ISellerDataService _dataServices;
         #endregion
 
         #region Constructor
-        public SellerService(ILogger<SellerService> logger)
+        public SellerService(ILogger<SellerService> logger, ProducerConfig ProducerConfig, IMapper mapper, ISellerDataService dataServices)
         {
             _logger = logger;
+            _producerconfig = ProducerConfig;
+            _mapper = mapper;
+            _dataServices = dataServices;
+
         }
         #endregion
 
@@ -24,22 +37,42 @@ namespace SellerAPI.Service
         public async Task<bool> AddProduct(ProductDetails request)
         {
             _logger.LogInformation("SellerService AddProduct IN");
+            string serializedData = JsonConvert.SerializeObject(request);
+            using (var producer = new ProducerBuilder<Null, string>(_producerconfig).Build())
+            {
+                await producer.ProduceAsync("AddProduct", new Message<Null, string>() { Value = serializedData });
+                producer.Flush(TimeSpan.FromSeconds(10));
+            }
             _logger.LogInformation("SellerService AddProduct OUT");
             return await Task.FromResult(true);
         }
 
-        public async Task<List<BidDetails>> GetBidDetails(int productId)
+        public async Task<bool> AddProducts(ProductDetails request)
         {
-            _logger.LogInformation("SellerService GetBidDetails IN");
-            var response = new List<BidDetails> { new BidDetails { ProductID = 1, ProductName = "abc", BidAmount = 201, StartingPrice = 100 } };
-            _logger.LogInformation("SellerService GetBidDetails OUT");
-            return await Task.FromResult(response);
+            _logger.LogInformation("SellerService AddProduct IN");
+            await _dataServices.AddProducts(_mapper.Map<Seller>(request));            
+            _logger.LogInformation("SellerService AddProduct OUT");
+            return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteProduct(int productId)
+        public async Task<Data.Models.Response.BidDetailsResponse> GetBidDetails(int productId)
+        {
+            _logger.LogInformation("SellerService GetBidDetails IN");
+             var response =  await _dataServices.GetBidDetails(productId);
+            _logger.LogInformation("SellerService GetBidDetails OUT");
+            return response;
+        }
+
+        public async Task<bool> DeleteProduct(string productId)
         {
             _logger.LogInformation("SellerService DeleteProduct IN");
-            _logger.LogInformation("SellerService DeleteProduct OUT");
+            //using (var producer = new ProducerBuilder<Null,string>(_producerconfig).Build())
+            //{
+            //    await producer.ProduceAsync("DeleteProduct", new Message<Null, string>() { Value = productId });
+            //    producer.Flush(TimeSpan.FromSeconds(10));
+            //}
+            await _dataServices.DeleteProduct(productId);
+                _logger.LogInformation("SellerService DeleteProduct OUT");
             return await Task.FromResult(true);
         }
         #endregion

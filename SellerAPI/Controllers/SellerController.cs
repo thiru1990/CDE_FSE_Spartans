@@ -44,7 +44,10 @@ namespace SellerAPI.Controllers
         public async Task<IActionResult> AddProduct(ProductRequest request)
         {
             _logger.LogInformation("SellerController AddProduct IN");
-            await _SellerService.AddProduct(_mapper.Map<ProductDetails>(request));
+            //Makes Call to Kafka Topic
+            // await _SellerService.AddProduct(_mapper.Map<ProductDetails>(request));
+            //Direct call to mongo DB
+            await _SellerService.AddProducts(_mapper.Map<ProductDetails>(request));
             _logger.LogInformation("SellerController AddProduct OUT");
             return Ok("Success");
         }
@@ -56,9 +59,10 @@ namespace SellerAPI.Controllers
         public async Task<IActionResult> GetBidDetails(int productId)
         {
             _logger.LogInformation("SellerController GetBidDetails IN");
-            await _SellerService.GetBidDetails(productId);
+           var response = await _SellerService.GetBidDetails(productId);
+            
             _logger.LogInformation("SellerController GetBidDetails OUT");
-            return Ok("Success");
+            return new OkObjectResult(response);
         }
 
 
@@ -66,7 +70,7 @@ namespace SellerAPI.Controllers
         [Route("delete")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteProduct(int productId)
+        public async Task<IActionResult> DeleteProduct(string productId)
         {
             _logger.LogInformation("SellerController DeleteProduct IN");
             await _SellerService.DeleteProduct(productId);

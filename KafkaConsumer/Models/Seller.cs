@@ -1,10 +1,18 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SellerAPI.Model
+namespace KafkaService.Models
 {
-    public class ProductRequest
+  public class Seller
     {
-        public int ProductId { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         public string ProductName { get; set; }
         public string ShortDescription { get; set; }
         public string DetailedDescription { get; set; }
