@@ -82,6 +82,16 @@ namespace SellerAPI.Data
             _logger.LogInformation("SellerDataService GetBidDetails OUT");
             return await Task.FromResult(response);
         }
-        #endregion
-    }
+
+        public async Task<List<Products>> GetProductDetails()
+        {
+            _logger.LogInformation("SellerDataService GetProductDetails IN");
+            List<Products> products = new List<Products>();
+           var list = await _sellerCollection.Find(x => true).ToListAsync();
+            list.ForEach(items => products.Add(new Products() { ProductId = items.ProductId, ProductName = items.ProductName, ShortDescription = items.ShortDescription, DetailedDescription = items.DetailedDescription, Category = items.Category }));
+            _logger.LogInformation("SellerDataService GetProductDetails OUT");
+            return await Task.FromResult(products);
+        }
+            #endregion
+        }
 }

@@ -55,6 +55,14 @@ namespace SellerAPI.Service
             return await Task.FromResult(true);
         }
 
+        public async Task<List<Products>> GetProductDetails()
+        {
+            _logger.LogInformation("GetProductDetails AddProduct IN");
+          var result =  await _dataServices.GetProductDetails();
+            _logger.LogInformation("GetProductDetails AddProduct OUT");
+            return await Task.FromResult(result);
+        }
+
         public async Task<Data.Models.Response.BidDetailsResponse> GetBidDetails(int productId)
         {
             _logger.LogInformation("SellerService GetBidDetails IN");

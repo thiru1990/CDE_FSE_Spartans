@@ -55,6 +55,19 @@ namespace SellerAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("GetProductDetails")]
+        public async Task<IActionResult> GetProductDetails()
+        {
+            _logger.LogInformation("SellerController GetProductDetails IN");
+            var response = await _SellerService.GetProductDetails();
+
+            _logger.LogInformation("SellerController GetProductDetails OUT");
+            return new OkObjectResult(response);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("show-bids")]
         public async Task<IActionResult> GetBidDetails(int productId)
         {

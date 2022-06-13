@@ -13,5 +13,6 @@ namespace SellerAPI.Data.Contract
         Task<bool> AddProducts(Seller request);
         Task<bool> DeleteProduct(string productId);
         Task<BidDetailsResponse> GetBidDetails(int productId);
+        Task<List<Products>> GetProductDetails();
     }
 }

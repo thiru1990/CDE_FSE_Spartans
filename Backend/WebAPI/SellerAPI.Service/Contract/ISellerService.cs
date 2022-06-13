@@ -1,4 +1,5 @@
-﻿using SellerAPI.Service.Model;
+﻿using SellerAPI.Data.Models.Response;
+using SellerAPI.Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace SellerAPI.Service.Contract
         Task<bool> AddProducts(ProductDetails request);
         Task<Data.Models.Response.BidDetailsResponse> GetBidDetails(int productId);
         Task<bool> DeleteProduct(string productId);
+        Task<List<Products>> GetProductDetails();
     }
 }
