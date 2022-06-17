@@ -1,54 +1,128 @@
 <div>
-  <span style="color:#24a0ed;font-weight: bold;font-size: medium" >Place Bid</span> 
+  <span style="color:black;font-weight: bold;font-size: medium;font-family: sans-serif;" >Place Bid</span> 
 </div>
-<div style="padding-left:10% ;">
-    <form [formGroup]="form" (ngSubmit)="submit()">
-       
-        <div class="form-group">
-            <label for="name">Firstname</label>
-            <input style="width: 30%;" formControlName="name" id="name" type="text"
+<div class="form-font" style="padding-left:10% ;">
+   
+    <form [formGroup]="Myform" (ngSubmit)="submit()">
+       <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="name">FirstName</label>
+            <input style="width: 40%;" formControlName="FirstName" id="FirstName" type="text"
                 class="form-control">
-           <!--  <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                <div *ngIf="f.name.errors.required">Name is required.</div>
-                <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
-            </div> -->
+            <div *ngIf="f.FirstName.touched" class="alert alert-danger"> </div>
+             <div *ngIf="submitted && f.FirstName.errors" class="alert alert-danger">FirstName is required.</div>
         </div>
-        <div class="form-group">
-            <label for="name">Lastname</label>
-            <input style="width: 30%;" formControlName="name" id="name" type="text"
+        <div class="col-md-6 form-group">
+            <label for="name">LastName</label>
+            <input style="width: 40%;" formControlName="LastName" id="LastName" type="text"
                 class="form-control">
-           <!--  <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                <div *ngIf="f.name.errors.required">Name is required.</div>
-                <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
-            </div> -->
         </div>
-        <div class="form-group">
+       </div>
+       <div class="row">
+        <div class="form-group col-md-6">
+            <label for="Phone">PhoneNo</label>
+            <input style="width: 40%;" formControlName="Phone" id="Phone" type="text" class="form-control">
+            <div *ngIf="f.Phone.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.Phone.errors" class="alert alert-danger">PhoneNo is required.</div>
+      </div>
+        <div class="form-group col-md-6">
+            <label for="Email">Email</label>
+            <input style="width: 40%;" formControlName="Email" id="Email" type="text" class="form-control">
+            <div *ngIf="f.Email.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.Email.errors" class="alert alert-danger">email is required.</div>
+     </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-group" >
+            <label for="City" class="form-font">City:</label>
+            <select style="width: 40%;" id="City"
+                    class="form-control"
+                    formControlName="City">
+              <option value="" >Select City</option>
+              <option *ngFor="let c of cities"
+                      [value]="c">{{c}}</option>
+            </select>
+            <div *ngIf="f.City.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.City.errors" class="alert alert-danger">city is required.</div>
+       </div>
+          <div class="form-group col-md-6" >
+            <label for="State" class="form-font">State:</label>
+            <select style="width: 40%;" id="State" class="form-control" formControlName="State">
+              <option value="">Select State</option>
+              <option *ngFor="let s of states"
+                      [value]="s">{{s}}</option>
+            </select>
+            <div *ngIf="f.State.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.State.errors" class="alert alert-danger">state is required.</div>
+      </div>
+    </div>
+       <div class="row">
+        <div class="col-md-6 form-group" >
             <label for="Address">Address</label>
-            <textarea style="width: 30%;" formControlName="address" id="address" type="text" class="form-control">
+            <textarea style="width: 40%;" formControlName="Address" id="Address" type="text" class="form-control">
             </textarea>
-           <!--  <div *ngIf="f.body.touched && f.body.invalid" class="alert alert-danger">
-                <div *ngIf="f.body.errors.required">Body is required.</div>
-            </div> -->
+            <div *ngIf="f.Address.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.Address.errors" class="alert alert-danger">Address is required.</div>
         </div>
-        <div class="form-group">
-            <label for="PhoneNo">PhoneNo</label>
-            <input style="width: 30%;" formControlName="PhoneNo" id="PhoneNo" type="number" class="form-control">
-           <!--  <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
-                <div *ngIf="f.email.errors.required">Email is required.</div>
-                <div *ngIf="f.email.errors.email">Please, enter valid email address.</div>
-            </div> -->
+       <div class="form-group col-md-6">
+            <label for="Pin">PinCode</label>
+            <input style="width: 40%;" formControlName="Pin" id="Pin" type="text"
+                class="form-control">
+            <div *ngIf="f.Pin.touched" class="alert alert-danger"> </div>
+             <div *ngIf="submitted && f.Pin.errors" class="alert alert-danger">pincode is required.</div>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input style="width: 30%;" formControlName="email" id="email" type="text" class="form-control">
-           <!--  <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
-                <div *ngIf="f.email.errors.required">Email is required.</div>
-                <div *ngIf="f.email.errors.email">Please, enter valid email address.</div>
-            </div> -->
-        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="ProductId">Product ID:</label>
+            <input style="width: 40%;" formControlName="ProductId" id="ProductId" type="text" class="form-control">  
+            <div *ngIf="f.ProductId.touched" class="alert alert-danger"> </div>
+                    <div *ngIf="submitted && f.ProductId.errors" class="alert alert-danger">productid is required.</div>
+               
+            </div>
+        <div class="form-group col-md-6">
+     <label for="price">Product price:</label>
+     <input style="width: 40%;" formControlName="BidAmount" id="BidAmount" type="number" step="any"
+     min="0" class="form-control">  
+     <div *ngIf="f.BidAmount.touched" class="alert alert-danger"> </div>
+             <div *ngIf="submitted && f.BidAmount.errors" class="alert alert-danger">amount is required.</div>
+        
+     </div>
+ 
+
+    </div>
         <br>
         
-        <button class="btn btn-primary" type="submit">Place Bid</button>
-      <!--   <button class="btn btn-primary" type="submit">Update Bid</button> -->
+        <button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="submit">Place Bid</button>
+        &nbsp;<button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="button"  (click)="UpdateBid()">Update Bid</button> 
+        &nbsp;<button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="button" (click)="ResetForm()" >Delete </button> 
     </form>
+   
 </div>
+
+<div>
+<p-dialog [(visible)]="dialogdisplay" [draggable]="false" [style]="{width:'40%'}" [modal]="true" [closable]="true">
+        
+<ng-template pTemplate="header">
+    Update Bid
+</ng-template>
+<div style="padding-left: 5px;" > 
+    <label for="email">Email:</label>&nbsp; &nbsp;  &nbsp;  &nbsp;
+    <input style="width: 40%;"  id="Email" type="text" [(ngModel)]="Email">  
+    </div>
+
+<div style="padding-left: 5px;" > 
+    <label for="price">Product ID:</label>&nbsp; &nbsp;  &nbsp;  &nbsp;
+    <input style="width: 40%;"  id="productid" type="text" [(ngModel)]="productid">  
+    </div>
+    <br>
+<div style="padding-left: 5px;">
+<label for="price">Product price:</label> &nbsp; 
+<input style="width: 40%;"  id="amount" type="number" step="any" min="0" [(ngModel)]="productPrice">  
+</div>
+    <ng-template pTemplate="footer">
+    <button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="button" (click)="UpdateBidDetails()">Update</button>
+    </ng-template>
+    </p-dialog>
+</div>
+

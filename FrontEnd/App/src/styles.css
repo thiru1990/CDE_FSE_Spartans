@@ -1,4 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 .navbar{
-    background-color:#24a0ed;color: white;
+    background-color:black;color: white;
+    font-family: sans-serif;
+}
+.btn-primary{
+    font-family: sans-serif;font-size: 12px;
+}
+/* .p-dialog-mask{
+    position: fixed!important;
+    top: 10% !important;
+    left: 10% !important;
+    width: 80% !important;
+    height: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    pointer-events: none !important;
+    background-color: grey !important;
+    transition-property: background-color !important;
+} */
+.p-dialog-header{
+    padding: 1em;
+    border-bottom: 1px solid #c7c7c7;
+    color: #2d353C;
+    background-color: #c7c7c7;
+    margin:0;
+float: none;
+font-weight: bold;
+}
+.p-dialog-footer{
+    padding: 1em;
+    border-bottom: 1px solid #c7c7c7;
+    color: #2d353C;
+    background-color: #c7c7c7;
+}
+.p-dialog-content{
+    overflow-y: inherit;
+    background-color: #c7c7c7;
+    color: #495057;
+    padding: 1em 1.5 rem 1rem 1.5rem;
 }

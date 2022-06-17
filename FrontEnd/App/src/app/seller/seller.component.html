@@ -1,1 +1,124 @@
-<p>seller works!</p>
+<div>
+    <span style="color:black;font-weight: bold;font-size: medium;font-family: sans-serif;" >Add Product</span> 
+  </div>
+  <div class="form-font" style="padding-left:10% ;">
+     
+      <form [formGroup]="Myform" (ngSubmit)="submit()">
+         <div class="row">
+          <div class="col-md-6 form-group">
+              <label for="name">ProductName</label>
+              <input style="width: 40%;" formControlName="Firstname" id="Firstname" type="text"
+                  class="form-control">
+              <div *ngIf="f.Firstname.touched" class="alert alert-danger"> </div>
+               <div *ngIf="submitted && f.Firstname.errors" class="alert alert-danger">Product Name is required.</div>
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="Address">Product Description</label>
+            <textarea style="width: 40%;" formControlName="Address" id="Address" type="text" class="form-control">
+            </textarea>
+            <div *ngIf="f.Address.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.Address.errors" class="alert alert-danger">Product Description is required.</div>
+        
+          </div>
+         </div>
+         <div class="row">
+          <div class="form-group col-md-6">
+            <label for="Address">Detailed Description</label>
+            <textarea style="width: 40%;" formControlName="Address" id="Address" type="text" class="form-control">
+            </textarea>
+            <div *ngIf="f.Address.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.Address.errors" class="alert alert-danger">Detailed Description is required.</div>
+        </div>
+          <div class="form-group col-md-6">
+            <label for="city" class="form-font">Product Category:</label>
+            <select style="width: 40%;" id="city"
+                    class="form-control"
+                    formControlName="city">
+              <option value="" >Select Category</option>
+              <option *ngFor="let c of cities"
+                      [value]="c">{{c}}</option>
+            </select>
+            <div *ngIf="f.city.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.city.errors" class="alert alert-danger">Product Category is required.</div>
+             </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 form-group" >
+            <label for="price">Starting price:</label>
+            <input style="width: 40%;" formControlName="amount" id="amount" type="number" step="any"
+            min="0" class="form-control">  
+            <div *ngIf="f.amount.touched" class="alert alert-danger"> </div>
+                    <div *ngIf="submitted && f.amount.errors" class="alert alert-danger">Starting Price is required.</div>
+               
+          </div>
+            <div class="form-group col-md-6" >
+                <label for="pincode">BidEndDate</label>
+                <input style="width: 40%;" formControlName="pincode" id="pincode" type="text"
+                    class="form-control">
+                <div *ngIf="f.pincode.touched" class="alert alert-danger"> </div>
+                 <div *ngIf="submitted && f.pincode.errors" class="alert alert-danger">BidEndDate is required.</div>
+           </div>
+      </div>
+         <div class="row">
+          <div class="col-md-6 form-group" >
+              <label for="Address">Address</label>
+              <textarea style="width: 40%;" formControlName="Address" id="Address" type="text" class="form-control">
+              </textarea>
+              <div *ngIf="f.Address.touched" class="alert alert-danger"> </div>
+              <div *ngIf="submitted && f.Address.errors" class="alert alert-danger">Address is required.</div>
+          </div>
+         <div class="form-group col-md-6">
+              <label for="pincode">PinCode</label>
+              <input style="width: 40%;" formControlName="pincode" id="pincode" type="text"
+                  class="form-control">
+              <div *ngIf="f.pincode.touched" class="alert alert-danger"> </div>
+               <div *ngIf="submitted && f.pincode.errors" class="alert alert-danger">pincode is required.</div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="form-group col-md-6">
+              <label for="price">Product ID:</label>
+              <input style="width: 40%;" formControlName="productid" id="productid" type="text" class="form-control">  
+              <div *ngIf="f.productid.touched" class="alert alert-danger"> </div>
+                      <div *ngIf="submitted && f.productid.errors" class="alert alert-danger">productid is required.</div>
+                 
+              </div>
+          <div class="form-group col-md-6">
+       <label for="price">Product price:</label>
+       <input style="width: 40%;" formControlName="amount" id="amount" type="number" step="any"
+       min="0" class="form-control">  
+       <div *ngIf="f.amount.touched" class="alert alert-danger"> </div>
+               <div *ngIf="submitted && f.amount.errors" class="alert alert-danger">amount is required.</div>
+          
+       </div>
+   
+  
+      </div>
+          <br>
+          
+          <button class="btn btn-primary" style="font-family: sans-serif;" type="submit">Add Product</button>
+          &nbsp;<button class="btn btn-primary" type="button" (click)="ResetForm()" >Delete </button> 
+      </form>
+     
+  </div>
+  
+  <div>
+  <p-dialog [(visible)]="dialogdisplay" [draggable]="false" [style]="{width:'40%'}" [modal]="true" [closable]="true">
+          
+  <ng-template pTemplate="header">
+      Update Bid
+  </ng-template>
+  <div style="padding-left: 5px;" > 
+      <label for="price">Product ID:</label>&nbsp; &nbsp;  &nbsp;  &nbsp;
+      <input style="width: 40%;"  id="productid" type="text" [(ngModel)]="productid">  
+      </div>
+      <br>
+  <div style="padding-left: 5px;">
+  <label for="price">Product price:</label> &nbsp; 
+  <input style="width: 40%;"  id="amount" type="number" step="any" min="0" [(ngModel)]="productPrice">  
+  </div>
+      <ng-template pTemplate="footer">
+      <button class="btn btn-primary" style="font-family: sans-serif;" type="submit" (click)="UpdateBidDetails()">Update</button>
+      </ng-template>
+      </p-dialog>
+  </div>
