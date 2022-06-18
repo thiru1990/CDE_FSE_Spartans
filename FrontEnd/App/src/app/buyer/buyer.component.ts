@@ -15,12 +15,17 @@ export class BuyerComponent implements OnInit {
   cities: string[];
   states: string[];
   dialogdisplay:boolean=false;
-  productid:any;
-  productPrice:any;
-  Email:any;
+  dialogdisplaydelete:boolean=false;
+  productid:number=0;
+  productPrice:number=0;
+  Email:string='';
+  productiddelete:number=0;
+  Emaildelete:string='';
   UpdateBidDetails1 :UpdatBid;
   constructor(private formBuilder:FormBuilder,private buyerService:BuyerService,
-    private notifyService : NotificationService) { }
+    private notifyService : NotificationService) { 
+      this.UpdateBidDetails1=new UpdatBid();
+    }
 
   ngOnInit(): void {
     this.initialiseForm();
@@ -71,13 +76,28 @@ this.showSuccess();
   }}
 
   showSuccess() {
-    this.notifyService.showSuccess("Bid Placed successfully !!", "")
+    this.notifyService.showSuccess("Bid Placed successfully !!", "");
+    this.ResetForm();
   
   }
   showUpdateSuccess() {
     this.notifyService.showSuccess("Bid Updated successfully !!", "")
+    this.ResetForm();
+    this.Email='';
+    this.productPrice=0;
+    this.productid=0;
   
   }
+
+  showUpdatValidation() {
+    this.notifyService.showSuccess("Please enter the details..", "")
+    this.ResetForm();
+    /* this.Email='';
+    this.productPrice=0;
+    this.productid=0; */
+  
+  }
+  
   getAllCities(): string[] {
     return ['Chennai', 'Mumbai', 'Delhi'];
   }
@@ -88,6 +108,14 @@ this.showSuccess();
     this.Myform.reset();
     this.initialiseForm();
   };
+
+  deleteBid(){
+    this.dialogdisplaydelete=true;
+if (this.Emaildelete != ''){
+    this.notifyService.showSuccess("Deleted Successfully", "")
+    this.ResetForm();}
+
+    }
   UpdateBid(){
 this.dialogdisplay=true;
   }
@@ -97,11 +125,17 @@ this.dialogdisplay=true;
    this.UpdateBidDetails1.ProductId= this.productid;
    this.UpdateBidDetails1.BidAmount=  this.productPrice;
     console.log('updateinput',this.UpdateBidDetails1);
+    if (this.UpdateBidDetails1.Email != "")
+    {
 this.buyerService.UpdateBidDetails(this.UpdateBidDetails1).subscribe(
   data =>{
     this.showUpdateSuccess();
-    console.log('updatebid',data);
-  }
-);
+    console.log('updatebid',data);}
+  
+);}
+else{
+  this.showUpdatValidation();
+}
 
 }}
+
