@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace SellerAPI.Controllers
 {   
-    [Authorize]
+    
     [ApiController]
     [ApiVersion("1.0")]
     [Route("e-auction/api/{V:apiVersion}/seller")]
