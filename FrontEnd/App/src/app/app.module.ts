@@ -12,6 +12,7 @@ import { SellerComponent } from './seller/seller.component';
 import { BidDetailsComponent } from './bid-details/bid-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
+import { LoginComponent } from './login/login.component';
   
 
 @NgModule({
@@ -22,6 +23,7 @@ import {DialogModule} from 'primeng/dialog';
     BuyerComponent,
     SellerComponent,
     BidDetailsComponent,
+    LoginComponent,
     
   ],
   imports: [

@@ -44,3 +44,41 @@ font-weight: bold;
     color: #495057;
     padding: 1em 1.5 rem 1rem 1.5rem;
 }
+.alert-danger{
+    width: 30%;
+    font-size: 12px;
+    color: red;
+         background-color:white; 
+         border-color:white;
+    }
+    .form-font{
+        font-size: 12px;
+       /* color:#0267bf; */
+       
+    }
+    .modal-dialog{
+        width: 55%;
+    }
+    
+    .p-dialog-mask{
+        position: fixed;
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        background-color: grey;
+        transition-property: background-color;
+    }
+    .row{
+        padding-bottom: 2px;
+    }
+    .form-control{
+        font-size: 12px;
+    }
+    .alert{
+        padding: 0rem;
+    }

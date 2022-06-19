@@ -86,16 +86,10 @@ this.showSuccess();
     this.Email='';
     this.productPrice=0;
     this.productid=0;
-  
-  }
-
+    }
   showUpdatValidation() {
     this.notifyService.showSuccess("Please enter the details..", "")
     this.ResetForm();
-    /* this.Email='';
-    this.productPrice=0;
-    this.productid=0; */
-  
   }
   
   getAllCities(): string[] {

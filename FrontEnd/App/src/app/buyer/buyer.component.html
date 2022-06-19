@@ -2,40 +2,52 @@
   <span style="color:black;font-weight: bold;font-size: medium;font-family: sans-serif;" >Place Bid</span> 
 </div>
 <div class="form-font" style="padding-left:10% ;">
-   
     <form [formGroup]="Myform" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <div style="padding-bottom: 5px;">
+                <label for="ProductId">Product ID</label>
+                </div>
+                <input style="width: 70%;" placeholder="Please Enter ProductId" formControlName="ProductId" id="ProductId" type="text" class="form-control">  
+                <div *ngIf="f.ProductId.touched" class="alert alert-danger"> </div>
+                <div *ngIf="submitted && f.ProductId.errors" class="alert alert-danger">productid is required.</div>
+                </div>
+            <div class="form-group col-md-4">
+            <div style="padding-bottom: 5px;">
+         <label for="price">Product Price</label>
+         </div>
+         <input style="width: 70%;" placeholder="Please Enter ProductPrice" formControlName="BidAmount" id="BidAmount" type="number" step="any"
+         min="0" class="form-control">  
+         <div *ngIf="f.BidAmount.touched" class="alert alert-danger"> </div>
+         <div *ngIf="submitted && f.BidAmount.errors" class="alert alert-danger">amount is required.</div>
+        </div>
+        </div>
+        <br>
+        <div>
+            <span style="color:black;font-weight: 700;font-size: 14px;font-family: sans-serif;" >Add information</span> 
+          </div>
+          <br>
        <div class="row">
-        <div class="col-md-6 form-group">
-            <label for="name">First Name:</label>
-            <input style="width: 40%;" formControlName="FirstName" id="FirstName" type="text"
+        <div class="col-md-4 form-group">
+            <div style="padding-bottom: 5px;">
+            <label for="name">First Name</label>
+        </div>
+            <input style="width: 70%;" placeholder="Please Enter FirstName" formControlName="FirstName" id="FirstName" type="text"
                 class="form-control">
             <div *ngIf="f.FirstName.touched" class="alert alert-danger"> </div>
              <div *ngIf="submitted && f.FirstName.errors" class="alert alert-danger">FirstName is required.</div>
         </div>
-        <div class="col-md-6 form-group">
-            <label for="name">Last Name:</label>
-            <input style="width: 40%;" formControlName="LastName" id="LastName" type="text"
+        <div class="col-md-4 form-group">
+            <div style="padding-bottom: 5px;">
+                <label for="name">Last Name</label>
+            </div>
+            <input style="width: 70%;" placeholder="Please Enter LastName" formControlName="LastName" id="LastName" type="text"
                 class="form-control">
         </div>
-       </div>
-       <div class="row">
-        <div class="form-group col-md-6">
-            <label for="Phone">Phone No:</label>
-            <input style="width: 40%;" formControlName="Phone" id="Phone" type="text" class="form-control">
-            <div *ngIf="f.Phone.touched" class="alert alert-danger"> </div>
-            <div *ngIf="submitted && f.Phone.errors" class="alert alert-danger">PhoneNo is required.</div>
-      </div>
-        <div class="form-group col-md-6">
-            <label for="Email">Email:</label>
-            <input style="width: 40%;" formControlName="Email" id="Email" type="text" class="form-control">
-            <div *ngIf="f.Email.touched" class="alert alert-danger"> </div>
-            <div *ngIf="submitted && f.Email.errors" class="alert alert-danger">email is required.</div>
-     </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 form-group" >
-            <label for="City" class="form-font">City:</label>
-            <select style="width: 40%;" id="City"
+        <div class="col-md-4 form-group" >
+            <div style="padding-bottom: 5px;">
+            <label for="City" class="form-font">City</label></div>
+            <select style="width: 70%;" id="City"
                     class="form-control"
                     formControlName="City">
               <option value="" >Select City</option>
@@ -45,9 +57,14 @@
             <div *ngIf="f.City.touched" class="alert alert-danger"> </div>
             <div *ngIf="submitted && f.City.errors" class="alert alert-danger">city is required.</div>
        </div>
-          <div class="form-group col-md-6" >
-            <label for="State" class="form-font">State:</label>
-            <select style="width: 40%;" id="State" class="form-control" formControlName="State">
+       </div>
+    <br>
+       <div class="row">
+        <div class="form-group col-md-4" >
+            <div style="padding-bottom: 5px;">
+            <label for="State" class="form-font">State</label>
+            </div>
+            <select style="width: 70%;" id="State" class="form-control" formControlName="State">
               <option value="">Select State</option>
               <option *ngFor="let s of states"
                       [value]="s">{{s}}</option>
@@ -55,41 +72,45 @@
             <div *ngIf="f.State.touched" class="alert alert-danger"> </div>
             <div *ngIf="submitted && f.State.errors" class="alert alert-danger">state is required.</div>
       </div>
-    </div>
-       <div class="row">
-        <div class="col-md-6 form-group" >
-            <label for="Address">Address:</label>
-            <textarea style="width: 40%;" formControlName="Address" id="Address" type="text" class="form-control">
+        <div class="col-md-4 form-group">
+            <div style="padding-bottom: 5px;">
+            <label for="Address">Address</label>
+            </div>
+            <textarea style="width: 70%;" placeholder="Please Enter Address" formControlName="Address" id="Address" type="text" class="form-control">
             </textarea>
             <div *ngIf="f.Address.touched" class="alert alert-danger"> </div>
             <div *ngIf="submitted && f.Address.errors" class="alert alert-danger">Address is required.</div>
         </div>
-       <div class="form-group col-md-6">
-            <label for="Pin">PinCode:</label>
-            <input style="width: 40%;" formControlName="Pin" id="Pin" type="text"
+       <div class="form-group col-md-4">
+        <div style="padding-bottom: 5px;">
+            <label for="Pin">PinCode</label>
+            </div> 
+            <input style="width: 70%;" placeholder="Please Enter Pincode" formControlName="Pin" id="Pin" type="text"
                 class="form-control">
             <div *ngIf="f.Pin.touched" class="alert alert-danger"> </div>
              <div *ngIf="submitted && f.Pin.errors" class="alert alert-danger">pincode is required.</div>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="ProductId">Product ID:</label>
-            <input style="width: 40%;" formControlName="ProductId" id="ProductId" type="text" class="form-control">  
-            <div *ngIf="f.ProductId.touched" class="alert alert-danger"> </div>
-                    <div *ngIf="submitted && f.ProductId.errors" class="alert alert-danger">productid is required.</div>
-               
-            </div>
-        <div class="form-group col-md-6">
-     <label for="price">Product Price:</label>
-     <input style="width: 40%;" formControlName="BidAmount" id="BidAmount" type="number" step="any"
-     min="0" class="form-control">  
-     <div *ngIf="f.BidAmount.touched" class="alert alert-danger"> </div>
-     <div *ngIf="submitted && f.BidAmount.errors" class="alert alert-danger">amount is required.</div>
-    </div>
-    </div>
     <br>
-        
+    <div class="row">
+        <div class="form-group col-md-4">
+            <div style="padding-bottom: 5px;">
+                <label for="Phone">Phone No</label>
+            </div>
+            <input style="width: 70%;" placeholder="Please Enter Phoneno" formControlName="Phone" id="Phone" type="text" class="form-control">
+            <div *ngIf="f.Phone.touched" class="alert alert-danger"> </div>
+            <div *ngIf="submitted && f.Phone.errors" class="alert alert-danger">PhoneNo is required.</div>
+      </div>
+      <div class="form-group col-md-4">
+        <div style="padding-bottom: 5px;">
+        <label for="Email">Email</label>
+        </div>
+        <input style="width: 70%;" placeholder="Please Enter Email" formControlName="Email" id="Email" type="text" class="form-control">
+        <div *ngIf="f.Email.touched" class="alert alert-danger"> </div>
+        <div *ngIf="submitted && f.Email.errors" class="alert alert-danger">email is required.</div>
+ </div>
+    </div><br>
+       
         <button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="submit">Place Bid</button>
         &nbsp;<button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="button"  (click)="UpdateBid()">Update Bid</button> 
         &nbsp;<button class="btn btn-primary" style="font-family: sans-serif; font-size: 12px;" type="button" (click)="deleteBid()" >Delete </button> 
