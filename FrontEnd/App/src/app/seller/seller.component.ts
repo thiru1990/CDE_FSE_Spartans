@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder, AbstractControl} from '@angular/forms';
 import { SellerService } from '../Shared/Service/Seller/seller.service';
 import { NotificationService } from '../Shared/Service/notification.service'
+
 @Component({
   selector: 'app-seller',
   templateUrl: './seller.component.html',
@@ -56,6 +57,7 @@ export class SellerComponent implements OnInit {
       console.log('Failedvalidation',"failedvalidation");
     }
     if(this.Myform.valid){
+     console.log("Token",localStorage.getItem('access_token')); 
 this.sellerService.addProduct({
   ProductName:this.Myform.get('ProductName')?.value,
   ShortDescription:this.Myform.get('ShortDescription')?.value,
@@ -72,7 +74,7 @@ this.sellerService.addProduct({
   Pin:this.Myform.get('Pin')?.value,
   Phone:this.Myform.get('Phone')?.value,
   Email:this.Myform.get('Email')?.value,
-}
+},localStorage.getItem('access_token')
 ).subscribe(
   data => {console.log('result',data);
 this.showSuccess();
@@ -102,7 +104,7 @@ this.notifyService.showError("Please Enter the valid input to AddProduct", "")
   }
   deleteProductID(){
     if (this.productiddelete != ''){
-    this.sellerService.deleteProductId(this.productiddelete).subscribe(
+    this.sellerService.deleteProductId(this.productiddelete,localStorage.getItem('access_token')).subscribe(
       data=>{
         this.notifyService.showSuccess("Deleted Successfully", "")
         console.log('deleteresulr',data)

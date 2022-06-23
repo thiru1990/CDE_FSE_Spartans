@@ -30,7 +30,6 @@ namespace SellerAPI.Controllers
         #endregion
 
         #region Operations
-        //[AllowAnonymous]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

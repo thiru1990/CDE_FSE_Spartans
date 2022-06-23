@@ -76,14 +76,15 @@ namespace SellerAPI
                             },
                             new string[] {}
 
-                    }                
+                    }
             });
-        });
+
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ISellerService, SellerService>();
             services.AddScoped<ISellerDataService, SellerDataService>();
-            services.AddScoped<IAuthenticationService, AuthenticationService>();            
-
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddCors(); // Make sure you call this previous to AddMvc
             //Fluent Validation
             services.AddMvc(options =>
             {
@@ -119,14 +120,18 @@ namespace SellerAPI
             }
 
             //app.UseHttpsRedirection();
+            // Make sure you call this before calling app.UseMvc()
+            //app.UseCors(
+            //    options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
+            //);
             app.UseCors(x => x
           .AllowAnyOrigin()
           .AllowAnyMethod()
           .AllowAnyHeader());
+           // app.UseCorsMiddleware();
             app.UseRouting();
             app.UseAuthentication();
-            app.UseAuthorization();
-
+            app.UseAuthorization();            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

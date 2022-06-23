@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:2503/api/1/seller';
+ endpoint: string = 'http://localhost:32915/AuthenticateUser';
+ //endpoint: string = 'https://eauctionsellerapi.azurewebsites.net//AuthenticateUser';
   //headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   
@@ -23,15 +24,19 @@ export class AuthService {
    signIn(email: string) {
      console.log( 'signin',email);
      const auth_token='123';
+     const httpOptions = {
+      //headers: new HttpHeaders({        
+        //Authorization: 'my-auth-token'}), 
+      params:new HttpParams().set("email", email)}
      const headers = new Headers({
-      'Content-Type': 'application/json',
-      'CorrelationId': '1',
-      'Authorization': `Bearer ${auth_token}`
+      'Content-Type': 'application/json'
+     // 'CorrelationId': '1',
+     // 'Authorization': `Bearer ${auth_token}`
     })
-    console.log( 'headers',headers);
+    console.log('headers',headers);
      let params = new HttpParams().set("email", email);
 
-    return this.http.post<any>(`${this.endpoint}/AuthenticateUser`, { headers: headers }, {params}).pipe(catchError(this.handleError))
+    return this.http.get<any>(`${this.endpoint}`, httpOptions).pipe(catchError(this.handleError))
      }
 
   getToken() {
@@ -59,6 +64,7 @@ export class AuthService {
   } */
   // Error
   private handleError(err:HttpErrorResponse){
+console.log("Error handler in");
     return throwError(()=>err.message);
   }
   }

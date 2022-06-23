@@ -1,8 +1,9 @@
 ﻿using Confluent.Kafka;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using Newtonsoft.Json;using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -31,11 +32,20 @@ namespace E_Auction.Model
             #region Declarations
             private readonly ILogger<AddBuyer> _logger;
             private ProducerConfig _producerconfig;
+            private readonly IMongoCollection<Buyer> _buyerCollection;
             #endregion
 
             #region Constructor
-            public CommandHandler(ILogger<AddBuyer> logger, ProducerConfig ProducerConfig)
+            public CommandHandler(IOptions<BuyerMongoDBConfig> buyerDatabaseSettings, ILogger<AddBuyer> logger, ProducerConfig ProducerConfig)
             {
+                var mongoClient = new MongoClient(
+                buyerDatabaseSettings.Value.ConnectionString);
+
+                var mongoDatabase = mongoClient.GetDatabase(
+                    buyerDatabaseSettings.Value.DatabaseName);
+
+                _buyerCollection = mongoDatabase.GetCollection<Buyer>(
+                    buyerDatabaseSettings.Value.CollectionName);
                 _logger = logger;
                 _producerconfig = ProducerConfig;
             }
@@ -44,7 +54,27 @@ namespace E_Auction.Model
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 _logger.LogInformation("AddBuyer IN");
-                var buyer = new BidRequest
+                //var buyer = new BidRequest
+                //{
+                //    FirstName = request.FirstName,
+                //    LastName = request.LastName,
+                //    Address = request.Address,
+                //    City = request.City,
+                //    State = request.State,
+                //    Pin = request.Pin,
+                //    Phone = request.Phone,
+                //    Email = request.Email,
+                //    ProductId = request.ProductId,
+                //    BidAmount = request.BidAmount,
+                //};
+                //string serializedData = JsonConvert.SerializeObject(buyer);
+                //using (var producer = new ProducerBuilder<Null, string>(_producerconfig).Build())
+                //{
+                //    await producer.ProduceAsync("PlaceBid", new Message<Null, string>() { Value = serializedData });
+                //    producer.Flush(TimeSpan.FromSeconds(10));
+                //}
+
+                var buyer = new Model.Buyer
                 {
                     FirstName = request.FirstName,
                     LastName = request.LastName,
@@ -57,14 +87,9 @@ namespace E_Auction.Model
                     ProductId = request.ProductId,
                     BidAmount = request.BidAmount,
                 };
-                string serializedData = JsonConvert.SerializeObject(buyer);
-                using (var producer = new ProducerBuilder<Null, string>(_producerconfig).Build())
-                {
-                    await producer.ProduceAsync("PlaceBid", new Message<Null, string>() { Value = serializedData });
-                    producer.Flush(TimeSpan.FromSeconds(10));
-                }
-                _logger.LogInformation("AddBuyer OUT");
-                //return await Task.FromResult(true);
+                await _buyerCollection.InsertOneAsync(buyer);
+
+                _logger.LogInformation("AddBuyer OUT");                
                 return Unit.Value;
             }
         }

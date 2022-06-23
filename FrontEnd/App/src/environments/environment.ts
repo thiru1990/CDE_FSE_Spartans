@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl:'http://localhost:2503/api/1/buyer',
-  apiSellerUrl:'http://localhost:32915/api/1/seller'
+  apiSellerUrl:'http://localhost:32915/e-auction/api/1/seller'
 };
 
 /*

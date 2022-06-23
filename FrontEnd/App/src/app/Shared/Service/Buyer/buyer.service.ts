@@ -21,8 +21,11 @@ export class BuyerService {
   UpdateBidDetails(UpdatebidDetails:UpdatBid){
     console.log('serviceinput',UpdatebidDetails);
    return this._httpClient.post<any>(environment.apiUrl+'/update-bid',UpdatebidDetails).pipe(catchError(this.handleError))
-
   }
+  GetBidDetails(){
+    
+  }
+  
   private handleError(err:HttpErrorResponse){
     return throwError(()=>err.message);
   }

@@ -10,8 +10,8 @@ namespace SellerAPI.Data.Models.Response
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public string ShortDescription { get; set; }
-        public string DetailedDescription { get; set; }
-        public string Category { get; set; }//should be enum
+        //public string ShortDescription { get; set; }
+        //public string DetailedDescription { get; set; }
+        //public string Category { get; set; }//should be enum
     }
 }

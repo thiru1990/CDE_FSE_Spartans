@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
       this.authservice.signIn(
         this.loginForm.get('Email')?.value).subscribe(
         (res:any)=>{
-        localStorage.setItem('access_token',res.token);
+        localStorage.setItem('access_token',res);
+        console.log('access_token',res);
         this.currentUser=res;
         this.router.navigate(['/Seller']);//check and navigate to seller page
       });

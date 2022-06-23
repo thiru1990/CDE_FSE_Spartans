@@ -1,1 +1,73 @@
-<p>bid-details works!</p>
+
+<div>
+    <span style="color:black;font-weight: bold;font-size: medium;font-family: sans-serif;" >Bid Details</span> 
+  </div>
+  <div class="form-font" style="padding-left:10% ;">
+    <form [formGroup]="Myform" (ngSubmit)="submit()">
+       <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-bottom: 5px;">
+          <label for="ProductName">Product</label>
+        </div>
+        <select style="width: 60%;" id="product"
+        class="form-control"
+        formControlName="product">
+  <option value="" >Select Product</option>
+  <option *ngFor="let p of products"
+          [value]=p.productId>{{p.productName}}</option>
+</select>
+<button style="width: 20%;" class="btn btn-primary" type="button" (click)="GetBidDetails()" >Get </button> 
+        </div>        
+        </div>
+      
+    </form>
+<div *ngIf="BidDetails">
+    <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-top: 20px;">
+          <label>{{BidDetails.shortDescription}}</label>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-top: 20px;">
+          <label>{{BidDetails.detailedDescription}}</label>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-top: 20px;">
+          <label>{{BidDetails.category}}</label>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-top: 20px;">
+          <label>{{BidDetails.startingPrice}}</label>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-top: 20px;">
+          <label>{{BidDetails.bidEndDate}}</label>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+          <div style="padding-top: 20px;">
+          
+        </div>
+        </div>
+    </div>
+    <li 
+      *ngFor="let bids of BidDetails.bidsReceived"
+      class="list-group-item">
+      {{ bids.email }} {{ bids.bidAmount }}
+  </li>
+</div>
+  </div>
