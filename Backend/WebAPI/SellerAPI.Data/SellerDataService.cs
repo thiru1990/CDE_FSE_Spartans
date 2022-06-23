@@ -51,6 +51,13 @@ namespace SellerAPI.Data
         public async Task<bool> AddProducts(Seller request)
         {
             _logger.LogInformation("SellerDataService AddProduct IN");
+            if (request.ProductId == 0)
+            {
+                List<Products> products = new List<Products>();
+                var list = await _sellerCollection.Find(x => true).ToListAsync();
+                list.ForEach(items => products.Add(new Products() { ProductId = items.ProductId, ProductName = items.ProductName }));
+                request.ProductId = (int)list.Max(x => x.ProductId)+1;                 
+            }
             await _sellerCollection.InsertOneAsync(request);
             _logger.LogInformation("SellerDataService AddProduct OUT");
             return await Task.FromResult(true);

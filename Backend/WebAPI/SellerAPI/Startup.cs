@@ -124,11 +124,11 @@ namespace SellerAPI
             //app.UseCors(
             //    options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
             //);
-            app.UseCors(x => x
-          .AllowAnyOrigin()
-          .AllowAnyMethod()
-          .AllowAnyHeader());
-           // app.UseCorsMiddleware();
+          //  app.UseCors(x => x
+          //.AllowAnyOrigin()
+          //.AllowAnyMethod()
+          //.AllowAnyHeader());
+           app.UseCorsMiddleware();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();            

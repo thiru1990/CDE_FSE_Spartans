@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
- endpoint: string = 'http://localhost:32915/AuthenticateUser';
- //endpoint: string = 'https://eauctionsellerapi.azurewebsites.net//AuthenticateUser';
+ //endpoint: string = 'http://localhost:32915/AuthenticateUser';
+ endpoint: string = 'https://eauctionsellerapi.azurewebsites.net//AuthenticateUser';
   //headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   

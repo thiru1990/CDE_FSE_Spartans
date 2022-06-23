@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://localhost:2503/api/1/buyer',
-  apiSellerUrl:'http://localhost:32915/e-auction/api/1/seller'
+ // apiUrl:'http://localhost:2503/api/1/buyer',
+ // apiSellerUrl:'http://localhost:32915/e-auction/api/1/seller'
+  apiUrl:'https://eauctionbuyerapi.azurewebsites.net/api/1/buyer',
+  apiSellerUrl:'https://eauctionsellerapi.azurewebsites.net/e-auction/api/1/seller'
 };
 
 /*

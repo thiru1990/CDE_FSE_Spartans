@@ -7,7 +7,7 @@
        <div class="row">
         <div class="col-md-4 form-group">
           <div style="padding-bottom: 5px;">
-          <label for="ProductName">Product</label>
+          <label for="ProductName">Select Product</label>
         </div>
         <select style="width: 60%;" id="product"
         class="form-control"
@@ -16,6 +16,7 @@
   <option *ngFor="let p of products"
           [value]=p.productId>{{p.productName}}</option>
 </select>
+<div style="padding-top: 20px;"></div>
 <button style="width: 20%;" class="btn btn-primary" type="button" (click)="GetBidDetails()" >Get </button> 
         </div>        
         </div>
@@ -25,6 +26,7 @@
     <div class="row">
         <div class="col-md-4 form-group">
           <div style="padding-top: 20px;">
+            <label style="padding-right: 20px;"><b> ShortDescription:</b>  </label>
           <label>{{BidDetails.shortDescription}}</label>
         </div>
         </div>
@@ -32,6 +34,7 @@
     <div class="row">
         <div class="col-md-4 form-group">
           <div style="padding-top: 20px;">
+            <label style="padding-right: 20px;"><b>DetailedDescription: </b> </label>
           <label>{{BidDetails.detailedDescription}}</label>
         </div>
         </div>
@@ -39,6 +42,7 @@
     <div class="row">
         <div class="col-md-4 form-group">
           <div style="padding-top: 20px;">
+            <label style="padding-right: 20px;"><b>Category:</b>  </label>
           <label>{{BidDetails.category}}</label>
         </div>
         </div>
@@ -46,6 +50,7 @@
     <div class="row">
         <div class="col-md-4 form-group">
           <div style="padding-top: 20px;">
+            <label style="padding-right: 20px;"><b>StartingPrice:</b> </label>
           <label>{{BidDetails.startingPrice}}</label>
         </div>
         </div>
@@ -53,7 +58,8 @@
     <div class="row">
         <div class="col-md-4 form-group">
           <div style="padding-top: 20px;">
-          <label>{{BidDetails.bidEndDate}}</label>
+            <label style="padding-right: 20px;"><b>BidEndDate: </b> </label>
+          <label>{{BidDetails.bidEndDate|date}}</label>
         </div>
         </div>
     </div>
@@ -67,7 +73,7 @@
     <li 
       *ngFor="let bids of BidDetails.bidsReceived"
       class="list-group-item">
-      {{ bids.email }} {{ bids.bidAmount }}
+   <b>Email:</b>   {{ bids.email }}<label style="width: 20px;"></label> <b>BidAmount:</b>  {{ bids.bidAmount }}
   </li>
 </div>
   </div>
