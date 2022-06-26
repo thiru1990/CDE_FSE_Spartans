@@ -101,6 +101,7 @@ this.showSuccess();
   ResetForm(){
     this.Myform.reset();
     this.initialiseForm();
+    this.submitted=false;
   };
 
   deleteBid(){
