@@ -65,7 +65,7 @@ namespace SellerAPI.Data
         public async Task<bool> DeleteProduct(string productId)
         {
             _logger.LogInformation("SellerDataService DeleteProduct IN");
-            await _sellerCollection.DeleteOneAsync(x => x.Id == productId);
+            await _sellerCollection.DeleteOneAsync(x => x.ProductId == Convert.ToInt32(productId));
             _logger.LogInformation("SellerDataService DeleteProduct OUT");
             return await Task.FromResult(true);
         }

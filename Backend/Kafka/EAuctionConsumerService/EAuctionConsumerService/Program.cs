@@ -16,8 +16,13 @@ namespace EAuctionConsumerService
             var config = new ConsumerConfig
             {
                 GroupId = "demo_group",
-                BootstrapServers = "localhost:9092",
-                AutoOffsetReset = AutoOffsetReset.Earliest
+                BootstrapServers = "20.236.51.102:9092",
+                AutoOffsetReset = AutoOffsetReset.Earliest,
+                SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.Https,
+                SecurityProtocol = SecurityProtocol.SaslSsl,
+                SaslMechanism = SaslMechanism.Plain,
+                SaslUsername = "kafka",
+                SaslPassword = "2134WXNuQfwe"
             };
 
             using (var consumer = new ConsumerBuilder<Null, string>(config).Build())

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EAuctionConsumerService": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

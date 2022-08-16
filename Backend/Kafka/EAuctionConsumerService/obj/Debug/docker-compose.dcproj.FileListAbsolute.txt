@@ -1,0 +1,17 @@
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\EAuctionConsumerService.deps.json
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\EAuctionConsumerService.runtimeconfig.json
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\EAuctionConsumerService.runtimeconfig.dev.json
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\EAuctionConsumerService.exe
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\EAuctionConsumerService.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\Confluent.Kafka.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\MongoDB.Driver.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\MongoDB.Bson.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\Newtonsoft.Json.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\MongoDB.Driver.Core.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\MongoDB.Libmongocrypt.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\DnsClient.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\SharpCompress.dll
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\bin\Debug\EAuctionConsumerService.pdb
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+D:\SourceCode\CDE_FSE_Spartans\Backend\Kafka\EAuctionConsumerService\obj\Debug\docker-compose.dcproj.CopyComplete
