@@ -1,0 +1,11 @@
+services:
+  eauctionconsumerservice:
+    build:
+      context: .
+      dockerfile: EAuctionConsumerService/Dockerfile
+    image: eauctionconsumerservice
+    networks:
+      default: null
+networks:
+  default:
+    name: dockercompose7844538762979413246_default

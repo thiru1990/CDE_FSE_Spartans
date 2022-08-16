@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  eauctionconsumerservice:
+    image: ${DOCKER_REGISTRY-}eauctionconsumerservice
+    build:
+      context: .
+      dockerfile: EAuctionConsumerService/Dockerfile

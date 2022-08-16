@@ -118,6 +118,11 @@ namespace SellerAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SellerAPI v1"));
             }
+            else
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SellerAPI v1"));
+            }
 
             //app.UseHttpsRedirection();
             // Make sure you call this before calling app.UseMvc()
